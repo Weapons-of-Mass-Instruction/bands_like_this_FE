@@ -15,6 +15,12 @@ class MusicRecs extends React.Component {
     }
   }
 
+  handleFormQuery = (formQuery) => {
+    this.setState({
+      currentSearchQuery: formQuery,
+    })
+  }
+
   render() {
     // FOR THREE CARD RENDER - ANOTHER GET ON THE BACK END IS NEEDED FOR SEARCHQUERIES(BANDS) SAVED IN THE DB
     // let cards = this.state.searchQueries.map(searchQuery => {
@@ -29,7 +35,9 @@ class MusicRecs extends React.Component {
     // })
     return (
       <>
-        <SearchForm/>
+        <SearchForm
+        handleFormQuery={this.handleFormQuery}
+        />
         <MusicCard 
           currentSearchQuery={this.state.currentSearchQuery}
           img={this.state.data.img}
