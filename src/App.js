@@ -12,23 +12,23 @@ class App extends React.Component {
     return (
       <>
         <Router>
+          <Header />
           <Switch>
-            <Header />
-            <Route exact path="/login">
+            <Route exact path="/">
               {/* {this.props.authO.isAuthenticated
                 ?
                 <MusicRecs />
                 :
                 <LoginPage />
               } */}
-              <LoginPage/>
-              <MusicRecs/>
+              <LoginPage />
+              <MusicRecs />
             </Route>
             <Route exact path="/meetTheTeam">
               <MeetTheTeam />
             </Route>
-            <Footer />
           </Switch>
+          <Footer />
         </Router>
       </>
     );
