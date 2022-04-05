@@ -4,6 +4,7 @@ import MusicRecs from './Main/MusicRecs';
 import LoginPage from './Login/LoginPage';
 import MeetTheTeam from './AboutUs/MeetTheTeam';
 import Header from './Header';
+import Footer from './Footer';
 import './CSSfiles/app.css';
 
 class App extends React.Component {
