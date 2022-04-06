@@ -51,8 +51,17 @@ class MusicRecs extends React.Component {
   }
 
   //PUT
+  updateBand = async (bandToUpdate) => {
+    try {
+      let url = `${SERVER}/artists/${bandToUpdate._id}`;
+      await axios.put(url, bandToUpdate);
+      this.getBands();
+    }
+    catch(error) {
+      console.log('error');
+    }
+  }
 
-  
 
   //POST
 
