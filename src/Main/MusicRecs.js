@@ -14,7 +14,8 @@ class MusicRecs extends React.Component {
     this.state = {
       recs: [],
       currentSearchQuery: '',
-      searchQueries: []
+      searchQueries: [],
+      bandCard: []
     };
   }
 
@@ -28,10 +29,10 @@ class MusicRecs extends React.Component {
       this.setState({
         recs: bands.data,
       });
-      console.log(this.state.recs);
+    //  console.log(this.state.recs);
     }
     catch (error) {
-      console.log('error');
+      console.error('error');
     }
   };
 
@@ -73,11 +74,27 @@ class MusicRecs extends React.Component {
     let bands = await axios.get(url);
     this.setState({
       recs: bands.data,
+      bandCard: []
     });
     
   };
 
+  getBandsBySearch = (recs) => {
+    // ['The cure','nickleback','creed']
+    console.log('start of getBandsBySearch function: ' , recs);
+    let referenceArr = recs.reduce((acc, curr) => {
+      if (!acc.includes(curr.search)) {
+        acc.push(curr.search);
+        // console.log(acc);
+      };
+      return acc; 
+    }, [])
+    console.log('referenceArr just before state: ', referenceArr);
+    this.setState({
+      bandCard: referenceArr
+    });
 
+  };
 
   handleFormQuery = (formQuery) => {
     this.setState({
@@ -106,9 +123,13 @@ class MusicRecs extends React.Component {
       <>
         <SearchForm
           handleFormQuery={this.handleFormQuery}
+          getBandsBySearch={this.getBandsBySearch}
+          recs={this.state.recs}
         />
         <MusicCard
           recs={this.state.recs}
+          bandCard={this.state.bandCard}
+          
         />
       </>
     );

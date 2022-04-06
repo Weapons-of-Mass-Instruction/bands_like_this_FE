@@ -2,17 +2,23 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 class SearchForm extends React.Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      searchQuery: ''
+    }
+  }
 
   formChange = (e) => {
     this.setState({
-      searchQuery: e.target.searchQuery.value
+      searchQuery: e.target.value
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleFormQuery(this.state.searchQuery);
+    this.props.getBandsBySearch(this.props.recs)
   };
 
   render() {
