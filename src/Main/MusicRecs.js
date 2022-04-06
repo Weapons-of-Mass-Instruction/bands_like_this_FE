@@ -1,9 +1,12 @@
 import React from 'react';
 import MusicCard from './MusicCard';
 import SearchForm from './SearchForm';
+import axios from 'axios';
 
 // the data will be mapped through and passed as props to MusicCard
 // There should be 3 cards in total
+
+let SERVER = process.env.REACT_APP_SERVER;
 
 class MusicRecs extends React.Component {
   constructor(props){
@@ -15,10 +18,52 @@ class MusicRecs extends React.Component {
     }
   }
 
+  //GET all data basic skeleton
+  //url needs to be assigned correctly
+  //GETs all data from the mongodb 
+  getBands = async () => {
+    try{
+      let url = `${SERVER}/artists`;
+      let bands = await axios.get(url);
+      this.setState({
+        data:bands.data,
+      })
+    }
+    catch(error){
+      console.log('error');
+    }
+  }
+
+  //DELETE
+  //url needs to be assigned correctly
+  deleteBand = async (id) => {
+    try {
+      let url = `${SERVER}/artists/${id}`;
+      await axios.delete(url);
+      let updatedBands = this.state.data.filter(band => band._id !== id);
+      this.setState({
+        data: updatedBands,
+      })
+    }
+    catch(error) {
+      console.log('error');
+    }
+  }
+
+  //PUT
+
+  
+
+  //POST
+
   handleFormQuery = (formQuery) => {
     this.setState({
       currentSearchQuery: formQuery,
     })
+  }
+
+  componentDidMount = async () => {
+    this.getBands();
   }
 
   render() {
