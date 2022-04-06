@@ -12,9 +12,10 @@ class MusicRecs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      recs: [],
       currentSearchQuery: '',
-      searchQueries: []
+      searchQueries: [],
+      bandCard: []
     };
   }
 
@@ -26,11 +27,12 @@ class MusicRecs extends React.Component {
       let url = `${SERVER}/artists`;
       let bands = await axios.get(url);
       this.setState({
-        data: bands.data,
+        recs: bands.data,
       });
+    //  console.log(this.state.recs);
     }
     catch (error) {
-      console.log('error');
+      console.error('error');
     }
   };
 
@@ -41,9 +43,9 @@ class MusicRecs extends React.Component {
     try {
       let url = `${SERVER}/artists/${id}`;
       await axios.delete(url);
-      let updatedBands = this.state.data.filter(band => band._id !== id);
+      let updatedBands = this.state.recs.filter(band => band._id !== id);
       this.setState({
-        data: updatedBands,
+        recs: updatedBands,
       });
     }
     catch (error) {
@@ -71,11 +73,28 @@ class MusicRecs extends React.Component {
     let url = `${SERVER}/artist?searchQuery=${this.state.currentSearchQuery}`;
     let bands = await axios.get(url);
     this.setState({
-      data: bands.data,
+      recs: bands.data,
+      bandCard: []
     });
+    
   };
 
+  getBandsBySearch = (recs) => {
+    // ['The cure','nickleback','creed']
+    console.log('start of getBandsBySearch function: ' , recs);
+    let referenceArr = recs.reduce((acc, curr) => {
+      if (!acc.includes(curr.search)) {
+        acc.push(curr.search);
+        // console.log(acc);
+      };
+      return acc; 
+    }, [])
+    console.log('referenceArr just before state: ', referenceArr);
+    this.setState({
+      bandCard: referenceArr
+    });
 
+  };
 
   handleFormQuery = (formQuery) => {
     this.setState({
@@ -99,15 +118,18 @@ class MusicRecs extends React.Component {
     //     />
     //   )
     // })
+
     return (
       <>
         <SearchForm
           handleFormQuery={this.handleFormQuery}
+          getBandsBySearch={this.getBandsBySearch}
+          recs={this.state.recs}
         />
         <MusicCard
-          currentSearchQuery={this.state.currentSearchQuery}
-          img={this.state.data.img}
-          name={this.state.data.name}
+          recs={this.state.recs}
+          bandCard={this.state.bandCard}
+          
         />
       </>
     );
