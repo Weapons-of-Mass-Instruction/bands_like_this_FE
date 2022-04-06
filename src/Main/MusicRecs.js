@@ -36,6 +36,7 @@ class MusicRecs extends React.Component {
 
   //DELETE
   //url needs to be assigned correctly
+  //delete is associated with the delete button
   deleteBand = async (id) => {
     try {
       let url = `${SERVER}/artists/${id}`;
@@ -51,6 +52,7 @@ class MusicRecs extends React.Component {
   }
 
   //PUT
+  //associated with the favorite button
   updateBand = async (bandToUpdate) => {
     try {
       let url = `${SERVER}/artists/${bandToUpdate._id}`;
@@ -63,7 +65,17 @@ class MusicRecs extends React.Component {
   }
 
 
-  //POST
+  //SEARCH GET
+  //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
+  searchBand = async () => {
+    let url = `${SERVER}/artist?searchQuery=${this.state.currentSearchQuery}`;
+    let bands = await axios.get(url);
+    this.setState({
+      data:bands.data,
+    })
+  }
+
+
 
   handleFormQuery = (formQuery) => {
     this.setState({
