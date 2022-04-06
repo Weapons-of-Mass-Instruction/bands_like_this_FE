@@ -7,13 +7,13 @@ class SearchForm extends React.Component {
   formChange = (e) => {
     this.setState({
       searchQuery: e.target.searchQuery.value
-    })
-  }
+    });
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleFormQuery(this.state.searchQuery);
-  }
+  };
 
   render() {
     return (

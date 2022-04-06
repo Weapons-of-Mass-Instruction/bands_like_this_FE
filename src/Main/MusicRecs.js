@@ -9,30 +9,30 @@ import axios from 'axios';
 let SERVER = process.env.REACT_APP_SERVER;
 
 class MusicRecs extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      data:[],
+      data: [],
       currentSearchQuery: '',
       searchQueries: []
-    }
+    };
   }
 
   //GET all data basic skeleton
   //url needs to be assigned correctly
   //GETs all data from the mongodb 
   getBands = async () => {
-    try{
+    try {
       let url = `${SERVER}/artists`;
       let bands = await axios.get(url);
       this.setState({
-        data:bands.data,
-      })
+        data: bands.data,
+      });
     }
-    catch(error){
+    catch (error) {
       console.log('error');
     }
-  }
+  };
 
   //DELETE
   //url needs to be assigned correctly
@@ -44,12 +44,12 @@ class MusicRecs extends React.Component {
       let updatedBands = this.state.data.filter(band => band._id !== id);
       this.setState({
         data: updatedBands,
-      })
+      });
     }
-    catch(error) {
+    catch (error) {
       console.log('error');
     }
-  }
+  };
 
   //PUT
   //associated with the favorite button
@@ -59,10 +59,10 @@ class MusicRecs extends React.Component {
       await axios.put(url, bandToUpdate);
       this.getBands();
     }
-    catch(error) {
+    catch (error) {
       console.log('error');
     }
-  }
+  };
 
 
   //SEARCH GET
@@ -71,21 +71,21 @@ class MusicRecs extends React.Component {
     let url = `${SERVER}/artist?searchQuery=${this.state.currentSearchQuery}`;
     let bands = await axios.get(url);
     this.setState({
-      data:bands.data,
-    })
-  }
+      data: bands.data,
+    });
+  };
 
 
 
   handleFormQuery = (formQuery) => {
     this.setState({
       currentSearchQuery: formQuery,
-    })
-  }
+    });
+  };
 
   componentDidMount = async () => {
     this.getBands();
-  }
+  };
 
   render() {
     // FOR THREE CARD RENDER - ANOTHER GET ON THE BACK END IS NEEDED FOR SEARCHQUERIES(BANDS) SAVED IN THE DB
@@ -102,9 +102,9 @@ class MusicRecs extends React.Component {
     return (
       <>
         <SearchForm
-        handleFormQuery={this.handleFormQuery}
+          handleFormQuery={this.handleFormQuery}
         />
-        <MusicCard 
+        <MusicCard
           currentSearchQuery={this.state.currentSearchQuery}
           img={this.state.data.img}
           name={this.state.data.name}
