@@ -7,24 +7,18 @@ import Header from './Header';
 import Footer from './Footer';
 import { withAuth0 } from '@auth0/auth0-react';
 import './CSSfiles/app.css';
-import LogoutButton from './Main/LogoutButton';
-import LoginButton from './Login/LoginButton';
+
+// refactored ternary statement to reflect intended content before login. 
 
 class App extends React.Component {
   render() {
     return (
       <>
+        {this.props.auth0.isAuthenticated ?
           <Router>
             <Header />
             <Switch>
               <Route exact path="/">
-                {this.props.auth0.isAuthenticated
-                  ?
-                  <LogoutButton />
-                  :
-                  <LoginButton />
-                }
-                <LoginPage />
                 <MusicRecs />
               </Route>
               <Route exact path="/meetTheTeam">
@@ -33,6 +27,9 @@ class App extends React.Component {
             </Switch>
             <Footer />
           </Router>
+          :
+          <LoginPage />
+        }
       </>
     );
   }
@@ -41,3 +38,4 @@ class App extends React.Component {
 
 
 export default withAuth0(App);
+

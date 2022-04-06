@@ -28,6 +28,7 @@ class MusicRecs extends React.Component {
       this.setState({
         data: bands.data,
       });
+      console.log(this.state.data);
     }
     catch (error) {
       console.log('error');
@@ -73,6 +74,7 @@ class MusicRecs extends React.Component {
     this.setState({
       data: bands.data,
     });
+    
   };
 
 
@@ -85,6 +87,7 @@ class MusicRecs extends React.Component {
 
   componentDidMount = async () => {
     this.getBands();
+    console.log(this.state.data);
   };
 
   render() {
@@ -99,6 +102,7 @@ class MusicRecs extends React.Component {
     //     />
     //   )
     // })
+
     return (
       <>
         <SearchForm
