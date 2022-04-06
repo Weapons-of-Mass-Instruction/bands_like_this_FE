@@ -12,7 +12,7 @@ class MusicRecs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      recs: [],
       currentSearchQuery: '',
       searchQueries: []
     };
@@ -26,9 +26,9 @@ class MusicRecs extends React.Component {
       let url = `${SERVER}/artists`;
       let bands = await axios.get(url);
       this.setState({
-        data: bands.data,
+        recs: bands.data,
       });
-      console.log(this.state.data);
+      console.log(this.state.recs);
     }
     catch (error) {
       console.log('error');
@@ -42,9 +42,9 @@ class MusicRecs extends React.Component {
     try {
       let url = `${SERVER}/artists/${id}`;
       await axios.delete(url);
-      let updatedBands = this.state.data.filter(band => band._id !== id);
+      let updatedBands = this.state.recs.filter(band => band._id !== id);
       this.setState({
-        data: updatedBands,
+        recs: updatedBands,
       });
     }
     catch (error) {
@@ -72,7 +72,7 @@ class MusicRecs extends React.Component {
     let url = `${SERVER}/artist?searchQuery=${this.state.currentSearchQuery}`;
     let bands = await axios.get(url);
     this.setState({
-      data: bands.data,
+      recs: bands.data,
     });
     
   };
@@ -87,7 +87,6 @@ class MusicRecs extends React.Component {
 
   componentDidMount = async () => {
     this.getBands();
-    console.log(this.state.data);
   };
 
   render() {
@@ -109,9 +108,7 @@ class MusicRecs extends React.Component {
           handleFormQuery={this.handleFormQuery}
         />
         <MusicCard
-          currentSearchQuery={this.state.currentSearchQuery}
-          img={this.state.data.img}
-          name={this.state.data.name}
+          recs={this.state.recs}
         />
       </>
     );
