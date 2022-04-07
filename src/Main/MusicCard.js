@@ -5,51 +5,28 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import MusicCarousel from './MusicCarousel.js';
 import '../CSSfiles/musicCarousel.css';
 
-// pass required data to MusicCarousel as props
-// recs={this.props.recs}
-//[
-// {
-// favorite: true
-// genre: "classic"
-// match: 98
-// name: "Dirty Randy and the Bois"
-// search: "Nickleback"
-// __v: 0
-// _id: "624b8dcebe2a0b0109cfdb99"
-// }
-// {
-// favorite: true
-// genre: "classic"
-// match: 98
-// name: "The second band"
-// search: "The Cure"
-// __v: 0
-// _id: "783b8fcebe2a0b0499cgyi82"
-// }
-//]
-
-//['pup','the cure'] bandCard
 
 class MusicCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      bandToDel: ''
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     bandToDel: ''
+  //   }
+  // }
 
+  deleteClick = (band) => {
+    this.props.findBandToDelID(band);
+  };
 
-
-  handleDelete = () => {
-    this.props.deleteBand(band);
-  }
+  favoriteClick = (band) => {
+    this.props.findBandToFav(band);
+  };
 
   render() {
     // TODO to add functionality to delete card. Deleting card should filter through bandCard prop and delete band name from array (.pop) this delete method is located in MusicRecs.js
 
     let cards = this.props.bandCard.map((band, index) => {
     let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
-    console.log(bandRecs);
       return (
         <Card key={index}>
           <Card.Body>
@@ -58,9 +35,9 @@ class MusicCard extends React.Component {
             </Card.Text>
               <MusicCarousel recs={bandRecs} />
 
-            <Button>Favorite</Button>
+            <Button onClick={() => this.favoriteClick(band)}>Favorite</Button>
             {/* //Button must PUT to change the data in the data base */}
-            <Button onClick={this.setBandToDel(band)}>Delete</Button>
+            <Button onClick={() => this.deleteClick(band)}>Delete</Button>
             {/* //Must DELETE band from database */}
           </Card.Body>
         </Card>
