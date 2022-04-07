@@ -186,6 +186,7 @@ class MusicRecs extends React.Component {
             recs={this.state.recs}
             loadingState={this.state.loading}
           />
+          
           <MusicCard
             recs={this.state.recs}
             bandCard={this.state.bandCard}
