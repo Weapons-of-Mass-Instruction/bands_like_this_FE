@@ -149,6 +149,7 @@ class MusicRecs extends React.Component {
       this.setState({
         wasError: true,
       })
+      this.setLoadingFalse();
       console.error(error);
     }
   };
