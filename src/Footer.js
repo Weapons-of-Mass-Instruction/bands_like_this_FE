@@ -12,7 +12,7 @@ class Footer extends React.Component {
       <div className="flex-container">
 
       <Navbar className="bg-warning bg-gradient text-dark"  expand="lg">
-        <p> &copy; 2022 Wepons of Mass Instruction (Code Fellows 201d83final)</p>
+        <p> &copy; 2022 Weapons of Mass Instruction (Code Fellows 201d83final)</p>
 <Container className="fB-Fitem-1">
 
         <Navbar.Collapse id="basic-navbar-nav">

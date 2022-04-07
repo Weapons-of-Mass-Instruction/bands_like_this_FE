@@ -10,7 +10,7 @@ class Header extends React.Component {
       <Navbar className="bg-warning bg-gradient text-dark" expand="lg">
         <Container>
         <Container>
-          <Navbar.Brand href="/MusicRecs">
+          <Navbar.Brand href="/">
             <img
               src={'img/image_720.png'}
               width="150"
@@ -23,18 +23,12 @@ class Header extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/MusicRecs">
-                Home
+              <Nav.Link href="/">
+                ReWind
               </Nav.Link>
-              <Nav.Link href="/SearchForm">
-                Search
-              </Nav.Link>
-              <NavDropdown title="More" id="basic-nav-dropdown">
+              <NavDropdown title="Flip through the records" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/MeetTheTeam">
                   MeetTheBand
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/Profile">
-                  Profile
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item >

@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
     return (
       < >
         <div className="flexbox-container">
-        <h1 className="flexbox-item flexbox-item-1">Bands Like This</h1>
+        <h1 className="flexbox-item flexbox-item-1">RECCrd.bin</h1>
         <LoginButton />
         </div>
       </>
