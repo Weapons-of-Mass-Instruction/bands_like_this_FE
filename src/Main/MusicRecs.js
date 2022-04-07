@@ -49,6 +49,9 @@ class MusicRecs extends React.Component {
         return { recs: [...state.recs, ...bands.data] }
       });
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -64,6 +67,9 @@ class MusicRecs extends React.Component {
         recs: updatedBands,
       });
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -95,6 +101,9 @@ class MusicRecs extends React.Component {
       await axios.put(url, recToUpdate);
       this.getBands();
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -114,8 +123,7 @@ class MusicRecs extends React.Component {
   searchBand = async (searchedBand) => {
     try {
       this.setLoadingTrue();
-      // let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
-      let url = `${SERVER}/artit?searchQuery=${searchedBand}`;
+      let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
 
       let bands = await axios.get(url);
       this.setState((state) => {
@@ -144,25 +152,37 @@ class MusicRecs extends React.Component {
     this.getBands();
   };
 
+  onErrorClose = () => {
+    this.setState({
+      wasError: false,
+    })
+  }
+
   render() {
 
     return (
       <>
-        {this.state.wasError ? <ErrorAlert/> : ''}
-        <SearchForm
-          handleFormQuery={this.handleFormQuery}
-          searchBand={this.searchBand}
-          recs={this.state.recs}
-          loadingState={this.state.loading}
+        <ErrorAlert
+          onErrorClose={this.onErrorClose}
+          wasError={this.state.wasError}
         />
-        <MusicCard
-          recs={this.state.recs}
-          bandCard={this.state.bandCard}
-          deleteBand={this.deleteBand}
-          updateBand={this.updateBand}
-          findBandToDelID={this.findBandToDelID}
-          findBandToFav={this.findBandToFav}
-        />
+
+        <>
+          <SearchForm
+            handleFormQuery={this.handleFormQuery}
+            searchBand={this.searchBand}
+            recs={this.state.recs}
+            loadingState={this.state.loading}
+          />
+          <MusicCard
+            recs={this.state.recs}
+            bandCard={this.state.bandCard}
+            deleteBand={this.deleteBand}
+            updateBand={this.updateBand}
+            findBandToDelID={this.findBandToDelID}
+            findBandToFav={this.findBandToFav}
+          />
+        </>
       </>
     );
   }
