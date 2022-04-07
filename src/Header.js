@@ -14,7 +14,7 @@ class Header extends React.Component {
         <Container>
           <Navbar.Brand href="/MusicRecs.js">
             <img
-              src={require('./img/image_720.png')}
+              src={'img/image_720.png'}
               width="150"
               height="150"
               className="d-inline-block align-top"

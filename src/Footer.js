@@ -13,7 +13,7 @@ class Footer extends React.Component {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
           <img
-              src={require('./img/GitHub-Mark-64px.png')}
+              src={'img/GitHub-Mark-64px.png'}
               href="https://github.com/Weapons-of-Mass-Instruction"
               width="40"
               height="40"
