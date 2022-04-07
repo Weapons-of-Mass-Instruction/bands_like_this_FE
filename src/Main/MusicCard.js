@@ -2,6 +2,7 @@
 import React from 'react';
 //import MusicCarousel from './MusicCarousel';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import MusicCarousel from './MusicCarousel';
 
 // pass required data to MusicCarousel as props
 // recs={this.props.recs}
@@ -26,7 +27,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 // }
 //]
 
-
+//['pup','the cure'] bandCard
 
 class MusicCard extends React.Component {
 
@@ -34,13 +35,15 @@ class MusicCard extends React.Component {
 
 
     let cards = this.props.bandCard.map((band, index) => {
+    let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
+    console.log(bandRecs);
       return (
         <Card key={index}>
           <Card.Body>
             <Card.Title>Bands like: {band}</Card.Title>
             <Card.Text>
-              {band}
             </Card.Text>
+              <MusicCarousel recs={bandRecs} />
 
             <Button>Favorite</Button>
             {/* //Button must PUT to change the data in the data base */}

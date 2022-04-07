@@ -42,7 +42,7 @@ class MusicRecs extends React.Component {
       let url = `${SERVER}/artists/${id}`;
       await axios.delete(url);
       let updatedBands = this.state.recs.filter(band => band._id !== id);
-      // keep an eye on this
+      // keep an eye on this 
       this.setState({
         recs: updatedBands,
       });
