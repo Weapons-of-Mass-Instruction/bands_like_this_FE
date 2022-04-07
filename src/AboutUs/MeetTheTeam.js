@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CSSfiles/meetTheTeam.css';
 
 class MeetTheTeam extends React.Component {
   render() {
