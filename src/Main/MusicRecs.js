@@ -26,12 +26,10 @@ class MusicRecs extends React.Component {
     try {
       let url = `${SERVER}/artists`;
       let bands = await axios.get(url);
-      this.setState({
-        recs: bands.data,
+      this.setState((state) => {
+        return { recs: [...state.recs, ...bands.data] }
       });
-    //  console.log(this.state.recs);
-    }
-    catch (error) {
+    } catch (error) {
       console.error('error');
     }
   };
@@ -44,11 +42,11 @@ class MusicRecs extends React.Component {
       let url = `${SERVER}/artists/${id}`;
       await axios.delete(url);
       let updatedBands = this.state.recs.filter(band => band._id !== id);
+      // keep an eye on this
       this.setState({
         recs: updatedBands,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log('error');
     }
   };
@@ -60,8 +58,7 @@ class MusicRecs extends React.Component {
       let url = `${SERVER}/artists/${bandToUpdate._id}`;
       await axios.put(url, bandToUpdate);
       this.getBands();
-    }
-    catch (error) {
+    } catch (error) {
       console.log('error');
     }
   };
@@ -69,32 +66,18 @@ class MusicRecs extends React.Component {
 
   //SEARCH GET
   //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
-  searchBand = async () => {
-    let url = `${SERVER}/artist?searchQuery=${this.state.currentSearchQuery}`;
+  searchBand = async (searchedBand) => {
+    let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
     let bands = await axios.get(url);
-    this.setState({
-      recs: bands.data,
-      bandCard: []
+    this.setState((state) => {
+      return { 
+        bandCard: [...state.bandCard, searchedBand],
+        recs: [...state.recs, ...bands.data] 
+      }
     });
-    
+    console.log(url);
   };
-
-  getBandsBySearch = (recs) => {
-    // ['The cure','nickleback','creed']
-    console.log('start of getBandsBySearch function: ' , recs);
-    let referenceArr = recs.reduce((acc, curr) => {
-      if (!acc.includes(curr.search)) {
-        acc.push(curr.search);
-        // console.log(acc);
-      };
-      return acc; 
-    }, [])
-    console.log('referenceArr just before state: ', referenceArr);
-    this.setState({
-      bandCard: referenceArr
-    });
-
-  };
+  
 
   handleFormQuery = (formQuery) => {
     this.setState({
@@ -123,7 +106,7 @@ class MusicRecs extends React.Component {
       <>
         <SearchForm
           handleFormQuery={this.handleFormQuery}
-          getBandsBySearch={this.getBandsBySearch}
+          searchBand={this.searchBand}
           recs={this.state.recs}
         />
         <MusicCard
