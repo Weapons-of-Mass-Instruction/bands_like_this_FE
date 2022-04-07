@@ -25,7 +25,7 @@ class SearchForm extends React.Component {
   render() {
   
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form className="formHome" onSubmit={this.handleSubmit}>
         <Form.Group controlId="searchQuery">
           <Form.Label>Search a Band</Form.Label>
           <Form.Control

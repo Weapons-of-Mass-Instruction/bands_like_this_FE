@@ -1,27 +1,50 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-// import { Container, Nav } from 'react-bootstrap';
-import { NavItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './CSSfiles/header.css';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import LogoutButton from './Main/LogoutButton';
+import './CSSfiles/header.css';
 
-// TODO: grab a nice team or team/band/music themed icon for this (maybe we change the wording to meet the band)
 
 class Header extends React.Component {
   render() {
     return (
-      <header className="hflexbox-container">
-
-      <Navbar className="hflexbox-item hflexbox-item-2">
-        <Navbar.Brand className="hflexbox-item hflexbox-item-3" href="/"></Navbar.Brand>
-        <div>
-          <NavItem className="hflexbox-item hflexbox-item-4"><Link to="/">Home</Link></NavItem>
-          <NavItem className="hflexbox-item hflexbox-item-6"><Link to="/meetTheTeam">Meet The Band</Link></NavItem>
-          <NavItem className="hflexbox-item hflexbox-item-5"><LogoutButton /></NavItem>
-        </div>
+      <Navbar className="bg-warning bg-gradient text-dark" expand="lg">
+        <Container>
+        <Container>
+          <Navbar.Brand href="/MusicRecs.js">
+            <img
+              src={require('./img/image_720.png')}
+              width="150"
+              height="150"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            /> 
+          </Navbar.Brand>
+          </Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/MusicRecs.js">
+                Home
+              </Nav.Link>
+              <Nav.Link href="/SearchForm.js">
+                Search
+              </Nav.Link>
+              <NavDropdown title="More" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/MeetTheTeam.js">
+                  MeetTheBand
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/Profile.js">
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item >
+                  <LogoutButton />
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
-      </header>
     );
   }
 }

@@ -2,3 +2,7 @@
   border: orange;
   min-height: 300px;
 }
+
+body {
+  background-color: orange;
+}
