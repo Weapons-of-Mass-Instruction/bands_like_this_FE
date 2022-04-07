@@ -1,8 +1,7 @@
-body {
-  background-color: #333;
-}
+
 
 .flexbox-container{
+  background-color: #90be6d;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -13,8 +12,7 @@ body {
 
 .flexbox-item {
   /* width: 100%; */
-  border: 3px solid #333;
-  background-color: azure;
+  background-color: #90be6d;
 }
 
 .flexbox-item-1 {
