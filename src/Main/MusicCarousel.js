@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+// import styles from './CSSfiles/musicCarousel.css';
 
 // recs={this.props.recs}
 //{
@@ -13,21 +14,32 @@ import { Carousel } from 'react-bootstrap';
 // }
 
 class MusicCarousel extends React.Component {
+
+
+
   render() {
+    let recCards = this.props.recs.map((rec, index) => {
+
+        return (
+          <Carousel.Item key={index}>
+          <img
+            className='carouselImage'
+            src={rec.img}
+            alt={rec.name}
+          />
+          <Carousel.Caption>
+            <h3>{rec.name}</h3>
+            <p>Genre: {rec.genre} </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        )
+      })
+
+
     return (
       <>
-        <Carousel >
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/400x300?text=First slide&bg=373940"
-              alt={this.props.recs[0].name}
-            />
-            <Carousel.Caption>
-              <h3>Oh look a carousel {this.props.recs[0].name}</h3>
-              <p>Genre: {this.props.recs[0].genre} </p>
-            </Carousel.Caption>
-          </Carousel.Item>
+        <Carousel key={this.props.recs[0].name}>
+          {recCards}
         </Carousel>
       </>
     );
