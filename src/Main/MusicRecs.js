@@ -1,6 +1,7 @@
 import React from 'react';
 import MusicCard from './MusicCard';
 import SearchForm from './SearchForm';
+import ErrorAlert from './ErrorAlert';
 import axios from 'axios';
 import '../CSSfiles/musicRecs.css';
 
@@ -21,7 +22,8 @@ class MusicRecs extends React.Component {
       searchQueries: [],
       bandCard: [],
       loading: false,
-      favRecs: []
+      favRecs: [],
+      wasError: false
     };
   }
 
@@ -50,6 +52,9 @@ class MusicRecs extends React.Component {
         return { recs: [...state.recs, ...bands.data] }
       });
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -65,6 +70,9 @@ class MusicRecs extends React.Component {
         recs: updatedBands,
       });
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -96,6 +104,9 @@ class MusicRecs extends React.Component {
       await axios.put(url, recToUpdate);
       this.getBands();
     } catch (error) {
+      this.setState({
+        wasError: true,
+      })
       console.error('error');
     }
   };
@@ -113,16 +124,25 @@ class MusicRecs extends React.Component {
   //SEARCH GET
   //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
   searchBand = async (searchedBand) => {
-    this.setLoadingTrue();
-    let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
-    let bands = await axios.get(url);
-    this.setState((state) => {
-      return {
-        bandCard: [...state.bandCard, searchedBand],
-        recs: [...state.recs, ...bands.data]
-      }
-    });
-    this.setLoadingFalse();
+    try {
+      this.setLoadingTrue();
+      let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
+
+      let bands = await axios.get(url);
+      this.setState((state) => {
+        return {
+          bandCard: [...state.bandCard, searchedBand],
+          recs: [...state.recs, ...bands.data]
+        }
+      });
+      this.setLoadingFalse();
+    }
+    catch (error) {
+      this.setState({
+        wasError: true,
+      })
+      console.error(error);
+    }
   };
 
   handleFormQuery = (formQuery) => {
@@ -135,24 +155,37 @@ class MusicRecs extends React.Component {
     this.getBands();
   };
 
+  onErrorClose = () => {
+    this.setState({
+      wasError: false,
+    })
+  }
+
   render() {
 
     return (
       <>
-        <SearchForm
-          handleFormQuery={this.handleFormQuery}
-          searchBand={this.searchBand}
-          recs={this.state.recs}
-          loadingState={this.state.loading}
+        <ErrorAlert
+          onErrorClose={this.onErrorClose}
+          wasError={this.state.wasError}
         />
-        <MusicCard
-          recs={this.state.recs}
-          bandCard={this.state.bandCard}
-          deleteBand={this.deleteBand}
-          updateBand={this.updateBand}
-          findBandToDelID={this.findBandToDelID}
-          findBandToFav={this.findBandToFav}
-        />
+
+        <>
+          <SearchForm
+            handleFormQuery={this.handleFormQuery}
+            searchBand={this.searchBand}
+            recs={this.state.recs}
+            loadingState={this.state.loading}
+          />
+          <MusicCard
+            recs={this.state.recs}
+            bandCard={this.state.bandCard}
+            deleteBand={this.deleteBand}
+            updateBand={this.updateBand}
+            findBandToDelID={this.findBandToDelID}
+            findBandToFav={this.findBandToFav}
+          />
+        </>
       </>
     );
   }
