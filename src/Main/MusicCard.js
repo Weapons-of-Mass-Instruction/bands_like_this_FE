@@ -32,6 +32,7 @@ class MusicCard extends React.Component {
 
   render() {
 
+
     let cards = this.props.bandCard.map((band, index) => {
       return (
         <Card key={index}>

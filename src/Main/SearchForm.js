@@ -18,10 +18,11 @@ class SearchForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleFormQuery(this.state.searchQuery);
-    this.props.getBandsBySearch(this.props.recs)
+    this.props.searchBand(this.state.searchQuery);
   };
 
   render() {
+  
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group controlId="searchQuery">
