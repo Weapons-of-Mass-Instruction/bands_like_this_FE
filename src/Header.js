@@ -11,14 +11,17 @@ import LogoutButton from './Main/LogoutButton';
 class Header extends React.Component {
   render() {
     return (
-      <Navbar>
-        <Navbar.Brand>RECCrd.bin</Navbar.Brand>
+      <header className="hflexbox-container">
+
+      <Navbar className="hflexbox-item hflexbox-item-2">
+        <Navbar.Brand className="hflexbox-item hflexbox-item-3" href="/"></Navbar.Brand>
         <div>
-          <NavItem><Link to="/">Home</Link></NavItem>
-          <NavItem><LogoutButton /></NavItem>
-          <NavItem><Link to="/meetTheTeam">Meet The Band</Link></NavItem>
+          <NavItem className="hflexbox-item hflexbox-item-4"><Link to="/">Home</Link></NavItem>
+          <NavItem className="hflexbox-item hflexbox-item-6"><Link to="/meetTheTeam">Meet The Band</Link></NavItem>
+          <NavItem className="hflexbox-item hflexbox-item-5"><LogoutButton /></NavItem>
         </div>
       </Navbar>
+      </header>
     );
   }
 }
