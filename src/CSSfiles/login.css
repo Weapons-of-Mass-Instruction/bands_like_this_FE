@@ -25,7 +25,7 @@ body {
   font-size: 100px;
   text-shadow: 5px 3px #264653;
   text-align: center;
-  background-image: url("../img/image-2.png");
+  /* background-image: url("../img/image-2.png"); */
 }
 
 .flexbox-item-4 {

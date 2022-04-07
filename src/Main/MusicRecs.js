@@ -1,6 +1,7 @@
 import React from 'react';
 import MusicCard from './MusicCard';
 import SearchForm from './SearchForm';
+import ErrorAlert from './ErrorAlert';
 import axios from 'axios';
 import '../CSSfiles/musicRecs.css';
 
@@ -20,7 +21,8 @@ class MusicRecs extends React.Component {
       currentSearchQuery: '',
       searchQueries: [],
       bandCard: [],
-      loading: false
+      loading: false,
+      wasError: false,
     };
   }
 
@@ -110,16 +112,26 @@ class MusicRecs extends React.Component {
   //SEARCH GET
   //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
   searchBand = async (searchedBand) => {
-    this.setLoadingTrue();
-    let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
-    let bands = await axios.get(url);
-    this.setState((state) => {
-      return {
-        bandCard: [...state.bandCard, searchedBand],
-        recs: [...state.recs, ...bands.data]
-      }
-    });
-    this.setLoadingFalse();
+    try {
+      this.setLoadingTrue();
+      // let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
+      let url = `${SERVER}/artit?searchQuery=${searchedBand}`;
+
+      let bands = await axios.get(url);
+      this.setState((state) => {
+        return {
+          bandCard: [...state.bandCard, searchedBand],
+          recs: [...state.recs, ...bands.data]
+        }
+      });
+      this.setLoadingFalse();
+    }
+    catch (error) {
+      this.setState({
+        wasError: true,
+      })
+      console.error(error);
+    }
   };
 
   handleFormQuery = (formQuery) => {
@@ -136,6 +148,7 @@ class MusicRecs extends React.Component {
 
     return (
       <>
+        {this.state.wasError ? <ErrorAlert/> : ''}
         <SearchForm
           handleFormQuery={this.handleFormQuery}
           searchBand={this.searchBand}
