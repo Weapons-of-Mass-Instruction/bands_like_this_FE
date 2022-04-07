@@ -16,16 +16,16 @@ class App extends React.Component {
       <>
         {this.props.auth0.isAuthenticated ?
           <Router>
-            <Header />
+            <Header/>
             <Switch>
               <Route exact path="/">
-                <MusicRecs />
+                <MusicRecs/>
               </Route>
               <Route exact path="/meetTheTeam">
-                <MeetTheTeam />
+                <MeetTheTeam/>
               </Route>
             </Switch>
-            <Footer />
+            <Footer/>
           </Router>
           :
           <LoginPage />
