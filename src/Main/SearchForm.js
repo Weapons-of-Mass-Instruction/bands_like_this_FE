@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Loading from './Loading.js'
+import '../CSSfiles/searchForm.css';
+
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class SearchForm extends React.Component {
   render() {
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form className="formHome" onSubmit={this.handleSubmit}>
         <Form.Group controlId="searchQuery">
           <Form.Label>Search a Band</Form.Label>
           <Form.Control

@@ -3,6 +3,7 @@
   min-height: 300px;
 }
 
-/* .card-body {
-  width:00px;
-} */
+body {
+  background-color: orange;
+}
+

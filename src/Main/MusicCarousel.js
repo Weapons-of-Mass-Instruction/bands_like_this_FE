@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-// import styles from './CSSfiles/musicCarousel.css';
+import '../CSSfiles/musicCarousel.css';
 
 // recs={this.props.recs}
 //{
@@ -22,7 +22,7 @@ class MusicCarousel extends React.Component {
           <Carousel.Item key={index}>
           <img
             className='carouselImage'
-            src={rec.img}
+            src={rec.img || "img/image-4.jpeg"}
             alt={rec.name}
           />
           <Carousel.Caption>

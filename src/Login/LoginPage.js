@@ -1,8 +1,6 @@
 import React from 'react';
 import LoginButton from './LoginButton';
-// import '../CSSfiles/login.css';
-
-
+import '../CSSfiles/login.css';
 
 class LoginPage extends React.Component {
   render() {

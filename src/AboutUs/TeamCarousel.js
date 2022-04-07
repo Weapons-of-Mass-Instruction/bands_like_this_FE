@@ -1,4 +1,8 @@
 
+import React from 'react';
+import '../CSSfiles/meetTheTeam.css';
+
+
 
 // <Carousel>
 //   <Carousel.Item>
@@ -61,3 +65,4 @@
 //     </Carousel.Caption>
 //   </Carousel.Item>
 // </Carousel>
+
