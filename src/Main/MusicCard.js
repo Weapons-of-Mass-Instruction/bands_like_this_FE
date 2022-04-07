@@ -2,7 +2,8 @@
 import React from 'react';
 //import MusicCarousel from './MusicCarousel';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import MusicCarousel from './MusicCarousel';
+import MusicCarousel from './MusicCarousel.js';
+import '../CSSfiles/musicCarousel.css';
 
 // pass required data to MusicCarousel as props
 // recs={this.props.recs}
@@ -30,9 +31,21 @@ import MusicCarousel from './MusicCarousel';
 //['pup','the cure'] bandCard
 
 class MusicCard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      bandToDel: ''
+    }
+  }
+
+
+
+  handleDelete = () => {
+    this.props.deleteBand(band);
+  }
 
   render() {
-
+    // TODO to add functionality to delete card. Deleting card should filter through bandCard prop and delete band name from array (.pop) this delete method is located in MusicRecs.js
 
     let cards = this.props.bandCard.map((band, index) => {
     let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
@@ -47,15 +60,14 @@ class MusicCard extends React.Component {
 
             <Button>Favorite</Button>
             {/* //Button must PUT to change the data in the data base */}
-            <Button>Delete</Button>
+            <Button onClick={this.setBandToDel(band)}>Delete</Button>
             {/* //Must DELETE band from database */}
           </Card.Body>
         </Card>
       )
     })
 
-    console.log('bandCard prop: ', this.props.bandCard);
-    console.log('recs prop: ', this.props.recs)
+
     return (
       <Container>
         <Row xs={1} sm={2} md={3} lg={4}>
