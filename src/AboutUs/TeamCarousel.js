@@ -1,68 +1,83 @@
 
 import React from 'react';
+import {Card, Container, Row, Col, Button} from 'react-bootstrap';
 import '../CSSfiles/meetTheTeam.css';
 
+class TeamCarousel extends React.Component {
+  render() {
+    return (
+<Container>
+  <Row xs={1} sm={2} md={3} lg={5}>
+    <Col>
+      <Card className="teamCards">
+        <Card.Img variant="top" src="img/ben.jpg" />
+        <Card.Body>
+          <Card.Title>Benjamin Carter</Card.Title>
+          <Card.Text>
 
+          </Card.Text>
+          <Button className="teamButtons" variant="primary" href="https://github.com/MotoBenny">Github</Button>
+          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/benjamin-carter-dev/">LinkedIn</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+    <Col>
+      <Card className="teamCards">
+        <Card.Img variant="top" src="img/cole.jpg" />
+        <Card.Body>
+          <Card.Title>Cole Gibbs</Card.Title>
+          <Card.Text>
 
-// <Carousel>
-//   <Carousel.Item>
-//     <img
-//       className="d-block w-100"
-//       src="holder.js/800x400?text=First slide&bg=373940"
-//       alt="First slide"
-//     />
-//     <Carousel.Caption>
-//       <h3>First slide label</h3>
-//       <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-//   <Carousel.Item>
-//     <img
-//       className="d-block w-100"
-//       src="holder.js/800x400?text=Second slide&bg=282c34"
-//       alt="Second slide"
-//     />
+          </Card.Text>
+          <Button className="teamButtons" variant="primary" href="https://github.com/colegibbs">Github</Button>
+          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/cole-gibbs/">LinkedIn</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+    <Col>
+      <Card className="teamCards">
+        <Card.Img variant="top" src="img/ella.png" />
+        <Card.Body>
+          <Card.Title>Ella Svete</Card.Title>
+          <Card.Text>
 
-//     <Carousel.Caption>
-//       <h3>Second slide label</h3>
-//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-//   <Carousel.Item>
-//     <img
-//       className="d-block w-100"
-//       src="holder.js/800x400?text=Third slide&bg=20232a"
-//       alt="Third slide"
-//     />
+          </Card.Text>
+          <Button className="teamButtons" variant="primary" href="https://github.com/EllaSvete">Github</Button>
+          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/ellasvete/">LinkedIn</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+    <Col>
+      <Card className="teamCards">
+        <Card.Img variant="top" src="img/michelle.jpg" />
+        <Card.Body>
+          <Card.Title>Michelle Salazar</Card.Title>
+          <Card.Text>
 
-//     <Carousel.Caption>
-//       <h3>Third slide label</h3>
-//       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-{/* <Carousel.Item> */}
-//     <img
-//       className="d-block w-100"
-//       src="holder.js/800x400?text=Third slide&bg=20232a"
-//       alt="Third slide"
-//     />
+          </Card.Text>
+          <Button className="teamButtons" variant="primary" href="https://github.com/MISalz">Github</Button>
+          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/michellesalazar010/">LinkedIn</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+    <Col>
+      <Card className="teamCards">
+        <Card.Img variant="top" src="img/nathan.jpg" />
+        <Card.Body>
+          <Card.Title>Nathan Waters</Card.Title>
+          <Card.Text>
+ 
+          </Card.Text>
+          <Button className="teamButtons" variant="primary" href="https://github.com/Nathan-Waters">Github</Button>
+          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/nathan-waters123/">LinkedIn</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  </Row>
+</Container>
 
-//     <Carousel.Caption>
-//       <h3>Third slide label</h3>
-//       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-// <Carousel.Item>
-//     <img
-//       className="d-block w-100"
-//       src="holder.js/800x400?text=Third slide&bg=20232a"
-//       alt="Third slide"
-//     />
+    )
+  }
+}
 
-//     <Carousel.Caption>
-//       <h3>Third slide label</h3>
-//       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-// </Carousel>
-
+export default TeamCarousel;
