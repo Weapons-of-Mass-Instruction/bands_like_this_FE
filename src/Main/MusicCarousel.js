@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-// import styles from './CSSfiles/musicCarousel.css';
+import '../CSSfiles/musicCarousel.css';
 
 // recs={this.props.recs}
 //{

@@ -2,7 +2,8 @@ import React from 'react';
 import MusicCard from './MusicCard';
 import SearchForm from './SearchForm';
 import axios from 'axios';
-import '../CSSfiles/musicRecs.css'
+import '../CSSfiles/musicRecs.css';
+
 
 // the data will be mapped through and passed as props to MusicCard
 // There should be 3 cards in total

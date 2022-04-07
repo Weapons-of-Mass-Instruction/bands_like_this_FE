@@ -1,12 +1,31 @@
 import React from 'react';
-// import '../CSSfiles/footer.css';
+import './CSSfiles/footer.css';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-// TODO: get an icon for github and add a link to the main repo for the front end inside the footer. 
+
 
 class Footer extends React.Component {
   render() {
-    return(
-      <h1 id="footerh1">Footer</h1>
+    return (
+      <Navbar className="bg-warning bg-gradient text-dark"  expand="lg">
+<Container>
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+          <img
+              src={require('./img/GitHub-Mark-64px.png')}
+              href="https://github.com/Weapons-of-Mass-Instruction"
+              width="40"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            /> 
+            <Nav.Link href="https://github.com/Weapons-of-Mass-Instruction">GitHub
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+</Container>
+      </Navbar>
     );
   }
 }
