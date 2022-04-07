@@ -1,16 +1,17 @@
 import React from 'react';
 import LoginButton from './LoginButton';
+import '/Users/ellasvete/codefellows/301/projects/bands_like_this_FE/src/CSSfiles/login.css';
+
+
 
 class LoginPage extends React.Component {
   render() {
     return (
       <>
-        <h1>Login Page</h1>
-        <div>
-          <p>this is actually a stand-in for our logo or project name, and should be replaced with img tags or whatever we decide.</p>
-        </div>
+        <div className="flexbox-container">
+        <h1 className="flexbox-item flexbox-item-1">Bands Like This</h1>
         <LoginButton />
-        <p>Our mission statement or description goes here.</p>
+        </div>
       </>
     );
   }
