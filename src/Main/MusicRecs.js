@@ -9,6 +9,8 @@ import '../CSSfiles/musicRecs.css'
 
 let SERVER = process.env.REACT_APP_SERVER;
 
+
+
 class MusicRecs extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +18,23 @@ class MusicRecs extends React.Component {
       recs: [],
       currentSearchQuery: '',
       searchQueries: [],
-      bandCard: []
+      bandCard: [],
+      loading: false
     };
   }
+
+  setLoadingTrue = () => {
+    this.setState({
+      loading: true
+    })
+  }
+
+  setLoadingFalse = () => {
+    this.setState({
+      loading: false
+    })
+  }
+
 
   //GET all data basic skeleton
   //GETs all data from the mongodb 
@@ -53,13 +69,13 @@ class MusicRecs extends React.Component {
     // filter through bandCard and remove bandToDel
     let localBandCard = this.state.bandCard
     let indexToPop = this.state.bandCard.indexOf(bandToDel);
-    localBandCard.splice(indexToPop,1) // removes the band from the card render state then sets the new arr to state to modify the render.
-    this.setState({ 
+    localBandCard.splice(indexToPop, 1) // removes the band from the card render state then sets the new arr to state to modify the render.
+    this.setState({
       bandCard: localBandCard
     });
     let delIdArr = []
     this.state.recs.filter((band) => {
-      if(band.search === bandToDel) {
+      if (band.search === bandToDel) {
         delIdArr.push(band._id);
       }
     });
@@ -83,7 +99,7 @@ class MusicRecs extends React.Component {
   findBandToFav = (bandToFav) => {
     let favIdArr = []
     this.state.recs.filter((band) => {
-      if(band.search === bandToFav) {
+      if (band.search === bandToFav) {
         favIdArr.push(band)
       }
     });
@@ -93,6 +109,7 @@ class MusicRecs extends React.Component {
   //SEARCH GET
   //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
   searchBand = async (searchedBand) => {
+    this.setLoadingTrue();
     let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
     let bands = await axios.get(url);
     this.setState((state) => {
@@ -101,7 +118,7 @@ class MusicRecs extends React.Component {
         recs: [...state.recs, ...bands.data]
       }
     });
-    console.log(url);
+    this.setLoadingFalse();
   };
 
   handleFormQuery = (formQuery) => {
@@ -122,6 +139,7 @@ class MusicRecs extends React.Component {
           handleFormQuery={this.handleFormQuery}
           searchBand={this.searchBand}
           recs={this.state.recs}
+          loadingState={this.state.loading}
         />
         <MusicCard
           recs={this.state.recs}
