@@ -9,31 +9,31 @@ class Header extends React.Component {
     return (
       <Navbar className="bg-warning bg-gradient text-dark" expand="lg">
         <Container>
-        <Container>
-          <Navbar.Brand href="/MusicRecs.js">
-            <img
-              src={'img/image_720.png'}
-              width="150"
-              height="150"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            /> 
-          </Navbar.Brand>
+          <Container>
+            <Navbar.Brand href="/MusicRecs">
+              <img
+                src={'img/image_720.png'}
+                width="150"
+                height="150"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+              />
+            </Navbar.Brand>
           </Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/MusicRecs.js">
+              <Nav.Link href="/MusicRecs">
                 Home
               </Nav.Link>
-              <Nav.Link href="/SearchForm.js">
+              <Nav.Link href="/SearchForm">
                 Search
               </Nav.Link>
               <NavDropdown title="More" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/MeetTheTeam.js">
+                <NavDropdown.Item href="/MeetTheTeam">
                   MeetTheBand
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Profile.js">
+                <NavDropdown.Item href="/Profile">
                   Profile
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
