@@ -4,6 +4,7 @@ import SearchForm from './SearchForm';
 import ErrorAlert from './ErrorAlert';
 import axios from 'axios';
 import '../CSSfiles/musicRecs.css';
+import { withAuth0 } from "@auth0/auth0-react";
 
 
 // the data will be mapped through and passed as props to MusicCard
@@ -27,8 +28,6 @@ class MusicRecs extends React.Component {
     };
   }
 
-  ge
-
   setLoadingTrue = () => {
     this.setState({
       loading: true
@@ -45,17 +44,26 @@ class MusicRecs extends React.Component {
   //GET all data basic skeleton
   //GETs all data from the mongodb 
   getBands = async () => {
-    try {
-      let url = `${SERVER}/artists`;
-      let bands = await axios.get(url);
-      this.setState((state) => {
-        return { recs: [...state.recs, ...bands.data] }
-      });
-    } catch (error) {
-      this.setState({
-        wasError: true,
-      })
-      console.error('error');
+    if (this.props.auth0.isAuthenticated){
+      const res = await this.props.auth0.getIdTokenClaims();
+      const jwt = res.__raw;
+      try {
+        
+        let url = `${SERVER}/artists`;
+        let bands = await axios.get(url, {
+          headers: {
+            "Authorization": `Bearer ${jwt}`
+          }
+        });
+        this.setState((state) => {
+          return { recs: [...state.recs, ...bands.data] }
+        });
+      } catch (error) {
+        this.setState({
+          wasError: true,
+        })
+        console.error('error');
+      }
     }
   };
 
@@ -191,4 +199,4 @@ class MusicRecs extends React.Component {
   }
 }
 
-export default MusicRecs;
+export default withAuth0(MusicRecs);
