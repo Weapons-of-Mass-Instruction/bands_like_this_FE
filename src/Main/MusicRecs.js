@@ -37,6 +37,7 @@ class MusicRecs extends React.Component {
   //DELETE
   //url needs to be assigned correctly
   //delete is associated with the delete button
+
   deleteBand = async (id) => {
     try {
       let url = `${SERVER}/artists/${id}`;
@@ -50,9 +51,21 @@ class MusicRecs extends React.Component {
       console.log('error');
     }
   };
+  // TODO this should filter through bandCard state, and delete the string that matches the card the user pressed the delete button on (this will delete the react card from the site)
+  // TODO should then filter through recs state (array) and get the ID values for the 6 objects that have a search prop that matches that same string, Pass these 6 ID values to the server to make 6 DELETE calls. 
+  // TODO once functional pass into MusicCard to be called with handle delete function.
+  findBandToDelID = () => {
+    
+  }
+
+
+
 
   //PUT
   //associated with the favorite button
+  // TODO: get the string of the card that was favorite-ed, use that to get the ID values of the 6 bands on that card.
+  // TODO Use the ID values of those six bands, to swap the boolean value of favorite to true.
+  // Hint: The same logic to get the card string and the 6 ID values from the Delete function will work here.
   updateBand = async (bandToUpdate) => {
     try {
       let url = `${SERVER}/artists/${bandToUpdate._id}`;
@@ -70,14 +83,14 @@ class MusicRecs extends React.Component {
     let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
     let bands = await axios.get(url);
     this.setState((state) => {
-      return { 
+      return {
         bandCard: [...state.bandCard, searchedBand],
-        recs: [...state.recs, ...bands.data] 
+        recs: [...state.recs, ...bands.data]
       }
     });
     console.log(url);
   };
-  
+
 
   handleFormQuery = (formQuery) => {
     this.setState({
@@ -90,17 +103,6 @@ class MusicRecs extends React.Component {
   };
 
   render() {
-    // FOR THREE CARD RENDER - ANOTHER GET ON THE BACK END IS NEEDED FOR SEARCHQUERIES(BANDS) SAVED IN THE DB
-    // let cards = this.state.searchQueries.map(searchQuery => {
-    //   let cardData = await axios.get(ServerUrlCallUsingSearchQuery)
-    //   return(
-    //     <MusicCard
-    //       searchQuery={searchQuery}
-    //       img={cardData.data.img}
-    //       name={cardData.data.name}
-    //     />
-    //   )
-    // })
 
     return (
       <>
@@ -112,7 +114,7 @@ class MusicRecs extends React.Component {
         <MusicCard
           recs={this.state.recs}
           bandCard={this.state.bandCard}
-          
+          deleteBand={this.deleteBand}
         />
       </>
     );
