@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LogoutButton from './Main/LogoutButton';
 import './CSSfiles/header.css';
 
@@ -50,15 +52,4 @@ class Header extends React.Component {
 }
 
 export default Header;
-// <Navbar bg="light" expand="lg">
-//   <Container>
-//     <Navbar.Brand>Bands Like This</Navbar.Brand>
-//     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//     <Navbar.Collapse id="basic-navbar-nav">
-//       <Nav className="me-auto">
-//         <Nav.Link to="/login">Home</Nav.Link>
-//         <Nav.Link to="/meetTheTeam">Meet The Team</Nav.Link>
-//       </Nav>
-//     </Navbar.Collapse>
-//   </Container>
-// </Navbar>
+

@@ -3,6 +3,7 @@ import './CSSfiles/footer.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 
+
 class Footer extends React.Component {
   render() {
     return (

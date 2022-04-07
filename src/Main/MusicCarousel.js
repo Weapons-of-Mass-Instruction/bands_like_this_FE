@@ -22,7 +22,7 @@ class MusicCarousel extends React.Component {
           <Carousel.Item key={index}>
           <img
             className='carouselImage'
-            src={rec.img}
+            src={rec.img || "img/image-4.jpeg"}
             alt={rec.name}
           />
           <Carousel.Caption>
