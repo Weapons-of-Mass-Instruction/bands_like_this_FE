@@ -1,9 +1,9 @@
 .carouselImage {
-  border: orange;
+  border: #4d908e;
   min-height: 300px;
 }
 
 body {
-  background-color: orange;
+  background-color: #4d908e;
 }
 

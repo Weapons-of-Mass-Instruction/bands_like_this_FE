@@ -5,7 +5,7 @@ import '../CSSfiles/login.css';
 class LoginPage extends React.Component {
   render() {
     return (
-      <>
+      < >
         <div className="flexbox-container">
         <h1 className="flexbox-item flexbox-item-1">Bands Like This</h1>
         <LoginButton />
