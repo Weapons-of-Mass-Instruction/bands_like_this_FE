@@ -20,9 +20,12 @@ class MusicRecs extends React.Component {
       currentSearchQuery: '',
       searchQueries: [],
       bandCard: [],
-      loading: false
+      loading: false,
+      favRecs: []
     };
   }
+
+  ge
 
   setLoadingTrue = () => {
     this.setState({
