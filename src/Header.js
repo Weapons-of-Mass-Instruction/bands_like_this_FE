@@ -27,7 +27,7 @@ class Header extends React.Component {
                 ReWind
               </Nav.Link>
               <NavDropdown title="Flip through the records" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/MeetTheTeam">
+                <NavDropdown.Item href="/meet-the-team">
                   MeetTheBand
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
