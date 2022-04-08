@@ -3,15 +3,15 @@ import Modal from 'react-bootstrap/Modal';
 
 class ErrorAlert extends React.Component {
   render() {
-    return(
-      <Modal 
-        show={this.props.wasError} 
+    return (
+      <Modal
+        show={this.props.wasError}
         onHide={this.props.onErrorClose}
         backdrop="static"
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        style={{background: 'rgba(50,0,0,0.5)'}}
+        style={{ background: 'rgba(50,0,0,0.5)' }}
       >
         <Modal.Header closeButton>
           <Modal.Title>Oh No!</Modal.Title>

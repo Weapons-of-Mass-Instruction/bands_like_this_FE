@@ -1,8 +1,14 @@
+
+
 .loading-spinner {
-  max-width: 12rem;
   animation: rotation 2s infinite linear;
-  background-color: transparent;
-  display: absolute;
+  max-width: 20rem;
+  position: fixed;
+  left: calc(50% - 10rem);
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
 }
 
 @keyframes rotation {
@@ -13,3 +19,4 @@
     transform: rotate(359deg);
   }
 }
+
