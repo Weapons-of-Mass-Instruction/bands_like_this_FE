@@ -6,6 +6,12 @@ import '../CSSfiles/musicCarousel.css';
 
 
 class MusicCard extends React.Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      fav: false
+    }
+  }
 
 
   deleteClick = (band) => {
@@ -13,7 +19,17 @@ class MusicCard extends React.Component {
   };
 
   favoriteClick = (band) => {
-    this.props.findBandToFav(band);
+    // this.props.findBandToFav(band);
+    this.props.addToFavRecs(this.props.recs);
+    if(this.state.fav){
+      this.setState({
+        fav: false
+      })
+    } else{
+      this.setState({
+        fav: true
+      })
+    };
   };
 
   render() {
@@ -28,7 +44,7 @@ class MusicCard extends React.Component {
             <Col>
               <Card className="recCard" key={index}>
                 <Card.Body>
-                  <Card.Title>Bands like: {band}</Card.Title>
+                  <Card.Title>Bands like: {band}{this.state.fav ? "⭐" : null}</Card.Title>
                   <Card.Text>
                   </Card.Text>
                   <MusicCarousel recs={bandRecs} />

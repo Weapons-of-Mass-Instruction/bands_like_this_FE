@@ -119,15 +119,15 @@ class MusicRecs extends React.Component {
     }
   };
 
-  findBandToFav = (bandToFav) => {
-    let favIdArr = []
-    this.state.recs.filter((band) => {
-      if (band.search === bandToFav) {
-        favIdArr.push(band)
-      }
-    });
-    favIdArr.forEach(rec => this.updateBand(rec))
-  };
+  // findBandToFav = (bandToFav) => {
+  //   let favIdArr = []
+  //   this.state.recs.filter((band) => {
+  //     if (band.search === bandToFav) {
+  //       favIdArr.push(band)
+  //     }
+  //   });
+  //   favIdArr.forEach(rec => this.updateBand(rec))
+  // };
 
   //SEARCH GET
   //when the user searches, the server will call the api's for data, then the server will put data in mongodb in schema form, then the server will send that data to the user. 
@@ -152,6 +152,24 @@ class MusicRecs extends React.Component {
       this.setLoadingFalse();
       console.error(error);
     }
+  };
+
+  addToFavRecs = (bandsAdded) => {
+    let newArr = []
+    this.state.recs.filter((bandObj, idx) => {
+      console.log(bandsAdded);
+      console.log(bandsAdded[idx].search);
+      console.log(bandObj.search);
+      if(bandObj.search === bandsAdded[idx].search) {
+        newArr.push(bandsAdded[idx]);
+      }
+    })
+      this.setState((state) => {
+        return {
+        favRecs: [...state.favRecs, newArr]
+        }
+      })
+    console.log(this.state.favRecs);
   };
 
   handleFormQuery = (formQuery) => {
@@ -194,6 +212,7 @@ class MusicRecs extends React.Component {
             updateBand={this.updateBand}
             findBandToDelID={this.findBandToDelID}
             findBandToFav={this.findBandToFav}
+            addToFavRecs={this.addToFavRecs}
           />
         </>
       </>
