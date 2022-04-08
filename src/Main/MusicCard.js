@@ -18,11 +18,12 @@ class MusicCard extends React.Component {
   render() {
     let cards = this.props.bandCard.map((band, index) => {
       let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
+      const favorite = (bandRecs[0].favorite) ? { backgroundColor: '#ffc107' } : {};
       return (
         <Container className='cardContainer'>
           <Row>
             <Col>
-              <Card className="recCard," key={index}>
+              <Card style={favorite} className="recCard," key={index}>
                 <Card.Body>
                   <Card.Title>Bands like: {band}</Card.Title>
                   <Card.Text>

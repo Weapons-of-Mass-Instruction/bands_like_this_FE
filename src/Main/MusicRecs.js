@@ -56,7 +56,7 @@ class MusicRecs extends React.Component {
           }
         });
         this.setState((state) => {
-          return { recs: [...state.recs, ...bands.data] }
+          return { recs: bands.data }
         });
       } catch (error) {
         this.setState({
@@ -102,12 +102,10 @@ class MusicRecs extends React.Component {
     delIdArr.forEach(id => this.deleteBand(id))
   };
 
-  //PUT
+  //PUT flips the favorite bool on backend
   updateBand = async (recToUpdate) => {
     try {
-      console.log('first', recToUpdate);
       recToUpdate.favorite = !recToUpdate.favorite;
-      console.log('second', recToUpdate)
       let url = `${SERVER}/artists/${recToUpdate._id}`;
       await axios.put(url, recToUpdate);
       this.getBands();
