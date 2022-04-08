@@ -35,7 +35,7 @@ class MusicCarousel extends React.Component {
 
     return (
       <>
-        <Carousel key={this.props.recs[0].name}>
+        <Carousel fade key={this.props.recs[0].name}>
           {recCards}
         </Carousel>
       </>
