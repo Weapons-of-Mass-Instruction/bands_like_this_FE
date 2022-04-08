@@ -4,9 +4,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import MusicCarousel from './MusicCarousel.js';
 import '../CSSfiles/musicCarousel.css';
 
-
 class MusicCard extends React.Component {
-
 
   deleteClick = (band) => {
     this.props.findBandToDelID(band);
@@ -26,7 +24,7 @@ class MusicCard extends React.Component {
         <Container className='cardContainer'>
           <Row>
             <Col>
-              <Card className="recCard" key={index}>
+              <Card className="recCard," key={index}>
                 <Card.Body>
                   <Card.Title>Bands like: {band}</Card.Title>
                   <Card.Text>
@@ -39,10 +37,8 @@ class MusicCard extends React.Component {
             </Col>
           </Row>
         </Container>
-
       )
     })
-
 
     return (
       <>
