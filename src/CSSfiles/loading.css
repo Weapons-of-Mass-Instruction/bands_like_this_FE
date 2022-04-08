@@ -1,0 +1,22 @@
+
+
+.loading-spinner {
+  animation: rotation 2s infinite linear;
+  max-width: 20rem;
+  position: fixed;
+  left: calc(50% - 10rem);
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+

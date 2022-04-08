@@ -1,0 +1,20 @@
+.formHome {
+  background-color: #f3722c;
+  margin: 16px;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 20px;
+  border-radius: 15px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+#root {
+  background-image: url("/public/img/backgroundRecords.jpeg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-repeat: repeat;
+  justify-content: space-between;
+}
