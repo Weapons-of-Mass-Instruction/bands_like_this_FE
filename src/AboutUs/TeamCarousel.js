@@ -7,17 +7,17 @@ class TeamCarousel extends React.Component {
   render() {
     return (
 <Container>
-  <Row xs={1} sm={2} md={3} lg={5}>
+  <Row>
     <Col>
       <Card className="teamCards">
-        <Card.Img variant="top" src="img/ben.jpg" />
+        <Card.Img id="teamImgs" variant="top" src="img/ben.jpg" />
         <Card.Body>
           <Card.Title>Benjamin Carter</Card.Title>
           <Card.Text>
 
           </Card.Text>
           <Button className="teamButtons" variant="primary" href="https://github.com/MotoBenny">Github</Button>
-          <Button className="teamButtons" variant="success" href="https://www.linkedin.com/in/benjamin-carter-dev/">LinkedIn</Button>
+          <Button variant="success" href="https://www.linkedin.com/in/benjamin-carter-dev/">LinkedIn</Button>
         </Card.Body>
       </Card>
     </Col>
