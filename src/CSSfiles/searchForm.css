@@ -6,13 +6,15 @@
   padding: 20px;
   border-radius: 15px;
   align-items: center;
-  margin-bottom: 400px;
+  margin-bottom: 100px;
 }
-/* *{
-  margin: 5px;
-} */
 
 #root {
   background-image: url("/public/img/backgroundRecords.jpeg");
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-repeat: repeat;
+  justify-content: space-between;
 }

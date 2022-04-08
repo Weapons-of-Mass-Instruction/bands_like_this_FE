@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import MusicCarousel from './MusicCarousel.js';
 import '../CSSfiles/musicCarousel.css';
+import Loading from './Loading.js';
 
 class MusicCard extends React.Component {
 
@@ -15,12 +16,9 @@ class MusicCard extends React.Component {
   };
 
   render() {
-
-
     let cards = this.props.bandCard.map((band, index) => {
       let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
       return (
-
         <Container className='cardContainer'>
           <Row>
             <Col>
@@ -42,6 +40,9 @@ class MusicCard extends React.Component {
 
     return (
       <>
+        {this.props.loadingState ? (
+          <Loading />
+        ) : null}
         <div className='cardsDiv'>
           {cards}
         </div>
@@ -51,5 +52,3 @@ class MusicCard extends React.Component {
 }
 
 export default MusicCard;
-
-//  xs={1} sm={2} md={3} lg={4}

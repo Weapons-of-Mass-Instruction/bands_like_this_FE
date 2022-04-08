@@ -4,10 +4,10 @@ import TeamCarousel from './TeamCarousel';
 
 class MeetTheTeam extends React.Component {
   render() {
-    return(
+    return (
       <>
-      <h1 id="h1Team">Meet the team!</h1>
-      <TeamCarousel/>
+        <h1 id="h1Team">Meet the team!</h1>
+        <TeamCarousel />
       </>
     );
   }

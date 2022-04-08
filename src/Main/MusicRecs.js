@@ -44,11 +44,11 @@ class MusicRecs extends React.Component {
   //GET all data basic skeleton
   //GETs all data from the mongodb 
   getBands = async () => {
-    if (this.props.auth0.isAuthenticated){
+    if (this.props.auth0.isAuthenticated) {
       const res = await this.props.auth0.getIdTokenClaims();
       const jwt = res.__raw;
       try {
-        
+
         let url = `${SERVER}/artists`;
         let bands = await axios.get(url, {
           headers: {
@@ -177,15 +177,12 @@ class MusicRecs extends React.Component {
           onErrorClose={this.onErrorClose}
           wasError={this.state.wasError}
         />
-
         <>
           <SearchForm
             handleFormQuery={this.handleFormQuery}
             searchBand={this.searchBand}
             recs={this.state.recs}
-            loadingState={this.state.loading}
           />
-          
           <MusicCard
             recs={this.state.recs}
             bandCard={this.state.bandCard}
@@ -193,6 +190,7 @@ class MusicRecs extends React.Component {
             updateBand={this.updateBand}
             findBandToDelID={this.findBandToDelID}
             findBandToFav={this.findBandToFav}
+            loadingState={this.state.loading}
           />
         </>
       </>

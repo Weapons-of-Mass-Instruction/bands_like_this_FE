@@ -5,9 +5,9 @@ class Loading extends React.Component {
   render() {
     return (
       <img
-      className="loading-spinner"
-      src="./loadingVinyl.svg"
-      alt="a loading icon"
+        className="loading-spinner"
+        src="./loadingVinyl.svg"
+        alt="a loading icon"
       />
     );
   }

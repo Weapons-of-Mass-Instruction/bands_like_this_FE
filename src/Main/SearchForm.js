@@ -1,8 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import Loading from './Loading.js'
 import '../CSSfiles/searchForm.css';
-
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -25,7 +23,6 @@ class SearchForm extends React.Component {
   };
 
   render() {
-
     return (
       <Form className="formHome" onSubmit={this.handleSubmit}>
         <Form.Group controlId="searchQuery">
@@ -39,9 +36,6 @@ class SearchForm extends React.Component {
         </Form.Group>
         <Button type="submit">Get Bands
         </Button>
-        {this.props.loadingState ? (
-          <Loading />
-        ) : null}
       </Form>
     );
   }

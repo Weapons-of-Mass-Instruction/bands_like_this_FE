@@ -1,17 +1,13 @@
 
 .flexbox-container{
-  /* background-color: #90be6d; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  /* align-content: space-between; */
-  /* margin: 50px; */
   padding-bottom: 1084px;
 }
 
 .flexbox-item {
-  /* width: 100%; */
   background-color: #90be6d;
 }
 
@@ -34,7 +30,6 @@
   border-color: #90be6d !important;
 }
 
-  /* CSS */
   .button-54 {
     font-family: "Open Sans", sans-serif;
     font-size: 20px !important;
