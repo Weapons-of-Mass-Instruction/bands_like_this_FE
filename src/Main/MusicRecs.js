@@ -12,8 +12,6 @@ import { withAuth0 } from "@auth0/auth0-react";
 
 let SERVER = process.env.REACT_APP_SERVER;
 
-
-
 class MusicRecs extends React.Component {
   constructor(props) {
     super(props);
@@ -93,11 +91,12 @@ class MusicRecs extends React.Component {
     this.setState({
       bandCard: localBandCard
     });
-    let delIdArr = []
+    let delIdArr = [];
     this.state.recs.filter((band) => {
       if (band.search === bandToDel) {
         delIdArr.push(band._id);
       }
+      return console.log('complete');
     });
     delIdArr.forEach(id => this.deleteBand(id))
   };
@@ -118,11 +117,12 @@ class MusicRecs extends React.Component {
   };
 
   findBandToFav = (bandToFav) => {
-    let favIdArr = []
+    let favIdArr = [];
     this.state.recs.filter((band) => {
       if (band.search === bandToFav) {
         favIdArr.push(band)
       }
+      return console.log('complete');
     });
     favIdArr.forEach(rec => this.updateBand(rec))
   };
