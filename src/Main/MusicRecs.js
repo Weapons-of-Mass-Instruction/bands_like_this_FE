@@ -135,7 +135,6 @@ class MusicRecs extends React.Component {
     try {
       this.setLoadingTrue();
       let url = `${SERVER}/artist?searchQuery=${searchedBand}`;
-
       let bands = await axios.get(url);
       this.setState((state) => {
         return {

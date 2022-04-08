@@ -7,7 +7,7 @@ import '../CSSfiles/login.css';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <Button className="flexbox-item flexbox-item-4" onClick={() => loginWithRedirect()}>Log In</Button>;
+  return <Button className="button-54 flexbox-item-4" onClick={() => loginWithRedirect()}>Log In</Button>;
 };
 
 export default LoginButton;

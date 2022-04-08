@@ -37,7 +37,7 @@ class SearchForm extends React.Component {
           />
           <Form.Text className="text-muted">Search a band and discover similar artists!</Form.Text>
         </Form.Group>
-        <Button type="submit">Get Recommendations
+        <Button type="submit">Get Bands
         </Button>
         {this.props.loadingState ? (
           <Loading />
