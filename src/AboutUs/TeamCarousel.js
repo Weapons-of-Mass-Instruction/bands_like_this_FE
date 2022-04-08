@@ -1,11 +1,12 @@
 
 import React from 'react';
-import {Card, Container, Row, Col, Button} from 'react-bootstrap';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import '../CSSfiles/meetTheTeam.css';
 
 class TeamCarousel extends React.Component {
   render() {
     return (
+
 <Container>
   <Row>
     <Col>
@@ -75,7 +76,7 @@ class TeamCarousel extends React.Component {
     </Col>
   </Row>
 </Container>
-
+     
     )
   }
 }

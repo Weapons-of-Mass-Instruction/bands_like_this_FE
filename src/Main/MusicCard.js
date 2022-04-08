@@ -20,35 +20,40 @@ class MusicCard extends React.Component {
 
 
     let cards = this.props.bandCard.map((band, index) => {
-    let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
+      let bandRecs = this.props.recs.filter((singleRec) => singleRec.search === band);
       return (
-        <Card key={index}>
-          <Card.Body>
-            <Card.Title>Bands like: {band}</Card.Title>
-            <Card.Text>
-            </Card.Text>
-              <MusicCarousel recs={bandRecs} />
 
-            <Button onClick={() => this.favoriteClick(band)}>Favorite</Button>
-            {/* //Button must PUT to change the data in the data base */}
-            <Button onClick={() => this.deleteClick(band)}>Delete</Button>
-            {/* //Must DELETE band from database */}
-          </Card.Body>
-        </Card>
+        <Container className='cardContainer'>
+          <Row>
+            <Col>
+              <Card className="recCard" key={index}>
+                <Card.Body>
+                  <Card.Title>Bands like: {band}</Card.Title>
+                  <Card.Text>
+                  </Card.Text>
+                  <MusicCarousel recs={bandRecs} />
+                  <Button onClick={() => this.favoriteClick(band)}>Favorite</Button>
+                  <Button onClick={() => this.deleteClick(band)}>Delete</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+
       )
     })
 
 
     return (
-      <Container>
-        <Row xs={1} sm={2} md={3} lg={4}>
-          <Col>
-            {cards}
-          </Col>
-        </Row>
-      </Container>
+      <>
+        <div className='cardsDiv'>
+          {cards}
+        </div>
+      </>
     );
   }
 }
 
 export default MusicCard;
+
+//  xs={1} sm={2} md={3} lg={4}
