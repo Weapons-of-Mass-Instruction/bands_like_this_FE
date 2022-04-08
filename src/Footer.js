@@ -9,7 +9,8 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div className="flex-container">
+      <div className="flex-container footer">
+        <footer className="footer-content">
 
       <Navbar className="bg-warning bg-gradient text-dark"  expand="lg">
         <p> &copy; 2022 Weapons of Mass Instruction (Code Fellows 201d83final)</p>
@@ -31,6 +32,7 @@ class Footer extends React.Component {
         </Navbar.Collapse>
 </Container>
       </Navbar>
+      </footer>
               </div>
     );
   }
