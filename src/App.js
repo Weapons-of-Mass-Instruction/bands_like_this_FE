@@ -19,7 +19,7 @@ class App extends React.Component {
               <Route exact path="/">
                 <MusicRecs />
               </Route>
-              <Route exact path="/meet-the-team">
+              <Route path="/meet-the-team">
                 <MeetTheTeam />
               </Route>
             </Switch>
